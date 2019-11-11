@@ -28,6 +28,10 @@ namespace review.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            else
+            {
+                return Content("hello");
+            }
             Review review = db.Reviews.Find(id);
             if (review == null)
             {
