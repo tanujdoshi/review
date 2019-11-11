@@ -1,0 +1,144 @@
+﻿@using review.Models;
+@model Tuple<product, Review>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<h2>Details</h2>
+<div>
+    <h4>product</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.catId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.subcatId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.Websites)
+               
+</th>
+
+            <th></th>
+        </tr>
+        <tr>
+
+            <td>
+                @Html.DisplayFor(model => model.Item1.productname)
+            </td>
+            <td>
+
+                @Html.DisplayFor(model => model.Item1.img)
+                <img src="@Url.Content(@Model.Item1.img)" />
+               
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Item1.catId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Item1.subcatId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Item1.Description)
+            </td>
+            <td>
+           
+                <a href="@Url.Content(Model.Item1.Websites)">@Html.DisplayFor(model => model.Item1.Websites)</a>
+            </td>
+
+        </tr>
+    </table>
+</div>
+<div>
+    <h4>review</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Product.productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.user.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.dape_post)
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var x in ViewBag.pass)
+        {
+
+
+    <tr>
+
+        <td>
+            @x.Product.productname
+        </td>
+        <td>
+            @x.user.name
+        </td>
+        <td>
+            @x.content
+        </td>
+        <td>
+            @x.rating
+        </td>
+        <td>
+            @x.dape_post
+        </td>
+
+    </tr>
+        }
+    </table>
+
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Review For This Product</label>
+            <input type="text" class="form-control" id="content" name="content" placeholder="Give Review Here">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Ratings</label>
+            <select class="form-control" id="rating" name="rating">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+       @Html.HiddenFor(model => model.Item1.Id)
+        <button type="submit" class="btn btn-primary mb-2">Review</button>
+
+    }
+</div>
+}
+

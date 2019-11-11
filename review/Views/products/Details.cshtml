@@ -1,0 +1,66 @@
+﻿@model IEnumerable<review.Models.product>
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>product --</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.catId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subcatId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Websites)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var i in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.ActionLink(i.productname, "Details", "reviews", new { id = i.Id }, null)
+                </td>
+                <td>
+                   
+                    @Html.DisplayFor(model => i.img)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => i.catId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => i.subcatId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => i.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => i.Websites)
+                </td>
+
+            </tr>
+        }
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

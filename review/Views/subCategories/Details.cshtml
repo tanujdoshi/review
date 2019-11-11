@@ -1,0 +1,38 @@
+﻿@model IEnumerable<review.Models.subcategory>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>subcategory</h4>
+    <hr />
+    <table class="table">
+        <td>
+            @Html.DisplayNameFor(model => model.Name)
+        </td>
+
+        <td>
+            @Html.DisplayNameFor(model => model.catId)
+        </td>
+        @foreach (var i in Model)
+        {
+            <tr>
+            <td>
+                
+                @Html.ActionLink(i.Name,"Details","products",new { id = i.Id },null)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => i.catId)
+            </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+  
+    @Html.ActionLink("Back to List", "Index")
+</p>
