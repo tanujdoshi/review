@@ -9,10 +9,53 @@ namespace review.Controllers
 {
     public class AccountController : Controller
     {
+        private reviewmodeldb db = new reviewmodeldb();
+        public ActionResult Index()
+        {
+            var m = Session["email"].ToString();
+            var ids = db.Users.FirstOrDefault(d => d.email == m);
+            var r = db.Reviews.FirstOrDefault(d => d.userId == ids.id);
+            var re = db.Reviews.Where(d => d.userId == ids.id);
+            ViewBag.view = re;
+            var t = new Tuple<user, Review>(ids, r);
+            return View(t);
+        }
+        [HttpPost]
+        public ActionResult Index(int id)
+        {
+            Review review = db.Reviews.FirstOrDefault(m => m.Id == id);
+            db.Reviews.Remove(review);
+            db.SaveChanges();
+            Response.Write("<script>alert('Deleted')</script>");
+            //return View();
+            return RedirectToAction("Index");
+        }
         // GET: Account
         public ActionResult Login()
         {
             return View();
+        }
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AdminLogin(adminn model)
+        {
+            using (var context = new reviewmodeldb())
+            {
+                bool isValid = context.Admins.Any(x => x.email == model.email && x.password == model.password);
+                if (isValid)
+                {
+                    Session["admin"] = model.email;
+                    FormsAuthentication.SetAuthCookie(model.email, false);
+                    return RedirectToAction("Index", "categories");
+                }
+
+                ModelState.AddModelError("", "Invalid username and password");
+                return View();
+            }
+            //return View();
         }
         [HttpPost]
         public ActionResult Login(user model)
@@ -24,7 +67,7 @@ namespace review.Controllers
                 {
                     Session["email"] = model.email;
                     FormsAuthentication.SetAuthCookie(model.email, false);
-                    return RedirectToAction("Index", "categories");
+                    return RedirectToAction("Index", "Home");
                 }
 
                 ModelState.AddModelError("", "Invalid username and password");
@@ -70,8 +113,16 @@ namespace review.Controllers
         }
         public ActionResult Logout()
         {
-            Session.Abandon();
+            Session["email"] = null;
+            //Session.Abandon();
             FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
+        }
+        public ActionResult adminlogout()
+        {
+            Session["admin"] = null;
+            //Session.Abandon();
+            //FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
     }

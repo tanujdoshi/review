@@ -12,7 +12,8 @@ namespace review.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-      //  [ForeignKey("category")]
+        public string img { get; set; }
+        //  [ForeignKey("category")]
 
         public int catId { get; set; }
         public virtual category category { get; set; }
