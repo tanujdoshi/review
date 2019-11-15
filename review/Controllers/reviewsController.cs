@@ -71,6 +71,7 @@ namespace review.Controllers
                 db.SaveChanges();
 
                 //var ids = (from x in db.Users where email == mail select x).FirstOrDefault();
+                Response.Write("<script>alert('Thankyou! Your review has been submited')</script>");
                 return Content("demo" + ids.id);
             }
         }
