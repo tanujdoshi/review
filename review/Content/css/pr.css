@@ -1,0 +1,430 @@
+
+
+        html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+.color1, .colors > li:nth-child(1), .group-two {
+    background-color: #d33f4b;
+}
+
+.color2, .colors > li:nth-child(2) {
+    background-color: #545151;
+}
+
+.color3, .colors > li:nth-child(3) {
+    background-color: #5695c3;
+}
+
+.color4, .colors > li:nth-child(4) {
+    background-color: #0F8A5F;
+}
+
+.color5, .colors > li:nth-child(5) {
+    background-color: #235E6F;
+}
+
+.shoe--name {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.shoe--price {
+    color: #949494;
+}
+
+.group {
+    min-height: 760px;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-image: url(https://bit.ly/2lpu3Uh);
+    background-blend-mode: multiply;
+}
+
+    .group .group--container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 0 60px 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-pack: distribute;
+        justify-content: space-around;
+    }
+
+    .group .group--title {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 100%;
+        text-transform: uppercase;
+        margin-bottom: 100px;
+    }
+
+        .group .group--title h1, .group .group--title h2, .group .group--title h3, .group .group--title h4 {
+            font-family: "Roboto";
+            font-weight: 700;
+            font-family: Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+            font-size: 32px;
+            margin: 0 0 10px 0;
+        }
+
+            .group .group--title h1:before, .group .group--title h2:before, .group .group--title h3:before, .group .group--title h4:before {
+                content: '';
+                display: block;
+                border-top: 4px solid #232323;
+                padding-top: 18px;
+                width: 43%;
+                margin: 0 auto;
+            }
+
+    .group .group--subtitle {
+        font-weight: 400;
+        font-family: "Roboto", sans-serif;
+        color: #777;
+        letter-spacing: 0.6px;
+    }
+
+.card {
+    width: 315px;
+    height: 400px;
+    background: #fff;
+    margin: 0 15px;
+    padding: 60px 33px 12px 33px;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.04);
+    border-radius: 2px;
+    position: relative;
+    display: block;
+}
+
+    .card .shoe img {
+        max-width: 100%;
+        width: 250px;
+        margin-bottom: 120px;
+        position: relative;
+    }
+
+    .card .shoe--info {
+        position: absolute;
+        bottom: -70px;
+        text-align: center;
+        width: 100%;
+        left: 0;
+    }
+
+        .card .shoe--info .shoe--name {
+            margin-bottom: 8px;
+        }
+
+        .card .shoe--info .shoe--price {
+            font-weight: 400;
+            color: #757575;
+            font-size: 14px;
+        }
+
+    .card .shoe--colors {
+        padding: 23px 0 0 0;
+        border-top: 1px solid #f4f4f5;
+        bottom: 40px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+.colors {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+    .colors > li {
+        list-style: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 4px;
+        box-sizing: border-box;
+        cursor: pointer;
+        -webkit-transition-duration: .2s;
+        transition-duration: .2s;
+        -webkit-transition: all ease 1s;
+        transition: all ease 1s;
+    }
+
+        .colors > li:hover {
+            -webkit-transform: scale(1.09);
+            transform: scale(1.09);
+            -webkit-transition: all ease 1s;
+            transition: all ease 1s;
+        }
+
+.buy-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-size: 14px;
+    outline: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border: 2px solid #afafaf;
+    text-transform: uppercase;
+    padding: 8px 19px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    color: #afafaf;
+}
+
+.card--style2 {
+    width: 330px;
+    height: 360px;
+    padding: 0;
+    position: relative;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+}
+
+    .card--style2 .shoe {
+        padding-bottom: 50px;
+        position: absolute;
+        bottom: 0;
+        will-change: transform;
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+        .card--style2 .shoe:before {
+            content: "";
+            display: block;
+            background: #fff;
+            height: 310px;
+            width: 200px;
+            position: absolute;
+            bottom: 50px;
+            left: 90px;
+        }
+
+        .card--style2 .shoe img {
+            width: 100%;
+            position: relative;
+        }
+
+    .card--style2 .shoe--info {
+        position: relative;
+        left: 24px;
+        top: 60px;
+        z-index: 20;
+        will-change: transform;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+    }
+
+    .card--style2 .shoe--name:before {
+        content: "";
+        padding-top: 13px;
+        width: 190px;
+    }
+
+    .card--style2 .shoe--colors {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+        .card--style2 .shoe--colors .colors {
+            width: auto;
+            margin: 0 auto;
+            position: relative;
+            left: 10px;
+            will-change: transform;
+            opacity: 0;
+            -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+            -webkit-transition: all 0.33s ease-in;
+            transition: all 0.33s ease-in;
+            -webkit-transition-delay: 0.153s;
+            transition-delay: 0.153s;
+        }
+
+    .card--style2:hover .shoe--colors .colors {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        -webkit-transition: all 0.33s ease-out;
+        transition: all 0.33s ease-out;
+        -webkit-transition-delay: 0.253s;
+        transition-delay: 0.253s;
+    }
+
+    .card--style2:hover .shoe {
+        -webkit-transform: scale(1.06);
+        transform: scale(1.06);
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    .card--style2:hover .shoe--info {
+        -webkit-transform: scale(0.95);
+        transform: scale(0.95);
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+    .card--style2.card--one .shoe--name:before {
+        border-top: 5px solid red;
+    }
+
+    .card--style2.card--two .shoe--name:before {
+        border-top: 5px solid black;
+    }
+
+    .card--style2.card--three .shoe--name:before {
+        border-top: 5px solid #5695c3;
+    }
+
+.group-one {
+    background-color: #eaeaea;
+    background-image: none;
+}
+
+    .group-one .group--title h1:before, .group-one .group--title h2:before, .group-one .group--title h3:before, .group-one .group--title h4:before {
+        border-color: #d33f4b;
+    }
+
+.group-two .group--title {
+    color: rgba(250, 250, 250, 0.85);
+}
+
+    .group-two .group--title h1:before, .group-two .group--title h2:before, .group-two .group--title h3:before, .group-two .group--title h4:before {
+        border-color: rgba(250, 250, 250, 0.9);
+    }
+
+.group-two .group--subtitle {
+    color: rgba(250, 250, 250, 0.85);
+}
+
+.group-two .is--active {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+}
+
+.group-two .shoe--info .shoe--name {
+    color: #fff;
+}
+
+.group-two .shoe--info .shoe--price {
+    color: #fff;
+}
+
+.group-three {
+    background-image: none;
+    background-color: #f4f4f4;
+}
+
+    .group-three .shop-all {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin: 120px 0 0 0;
+    }
+
+        .group-three .shop-all .button {
+            border: 3px solid #444;
+            outline: 0;
+            background-color: transparent;
+            border-radius: 2px;
+            padding: 9px 18px;
+            font-size: 13px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            -webkit-transition: all 0.23s ease;
+            transition: all 0.23s ease;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+            .group-three .shop-all .button:hover {
+                background-color: #232323;
+                color: #fff;
+                -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+                -webkit-transition: all 0.23s ease;
+                transition: all 0.23s ease;
+            }

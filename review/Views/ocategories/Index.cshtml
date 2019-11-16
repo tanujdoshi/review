@@ -1,4 +1,4 @@
-﻿@model IEnumerable<review.Models.subcategory>
+﻿@model IEnumerable<review.Models.category>
 
 @{
     ViewBag.Title = "Index";
@@ -14,25 +14,13 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.catId)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.catId)
+            @Html.ActionLink(item.Name,"Details","subcategories",new { id=item.Id},null)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

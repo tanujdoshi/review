@@ -10,120 +10,107 @@ using review.Models;
 
 namespace review.Controllers
 {
-    public class dddddController : Controller
+    public class ocategoriesController : Controller
     {
         private reviewmodeldb db = new reviewmodeldb();
 
-        // GET: ddddd
+        // GET: categories
         public ActionResult Index()
         {
-            var reviews = db.Reviews.Include(r => r.Product).Include(r => r.user);
-            return View(reviews.ToList());
+            return View(db.categories.ToList());
         }
 
-        // GET: ddddd/Details/5
+        // GET: categories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
-            {
-                return Content("hello");
-            }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
+            category category = db.categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(review);
+            return View(category);
         }
 
-        // GET: ddddd/Create
+        // GET: categories/Create
         public ActionResult Create()
         {
-            ViewBag.productId = new SelectList(db.Products, "Id", "productname");
-            ViewBag.userId = new SelectList(db.Users, "id", "name");
             return View();
         }
 
-        // POST: ddddd/Create
+        // POST: categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,content,rating,dape_post,productId,userId")] Review review)
+        public ActionResult Create([Bind(Include = "Id,Name")] category category)
         {
             if (ModelState.IsValid)
             {
-                db.Reviews.Add(review);
+                db.categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.productId = new SelectList(db.Products, "Id", "productname", review.productId);
-            ViewBag.userId = new SelectList(db.Users, "id", "name", review.userId);
-            return View(review);
+            return View(category);
         }
 
-        // GET: ddddd/Edit/5
+        // GET: categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
+            category category = db.categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.productId = new SelectList(db.Products, "Id", "productname", review.productId);
-            ViewBag.userId = new SelectList(db.Users, "id", "name", review.userId);
-            return View(review);
+            return View(category);
         }
 
-        // POST: ddddd/Edit/5
+        // POST: categories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,content,rating,dape_post,productId,userId")] Review review)
+        public ActionResult Edit([Bind(Include = "Id,Name")] category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(review).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.productId = new SelectList(db.Products, "Id", "productname", review.productId);
-            ViewBag.userId = new SelectList(db.Users, "id", "name", review.userId);
-            return View(review);
+            return View(category);
         }
 
-        // GET: ddddd/Delete/5
+        // GET: categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
+            category category = db.categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(review);
+            return View(category);
         }
 
-        // POST: ddddd/Delete/5
+        // POST: categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Review review = db.Reviews.Find(id);
-            db.Reviews.Remove(review);
+            category category = db.categories.Find(id);
+            db.categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

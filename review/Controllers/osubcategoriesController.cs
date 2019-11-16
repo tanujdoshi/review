@@ -10,7 +10,7 @@ using review.Models;
 
 namespace review.Controllers
 {
-    public class subcategoriesController : Controller
+    public class osubcategoriesController : Controller
     {
         private reviewmodeldb db = new reviewmodeldb();
 
@@ -23,13 +23,20 @@ namespace review.Controllers
         // GET: subcategories/Details/5
         public ActionResult Details(int? id)
         {
+           // Console.WriteLine("Helllo");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+          //9 subcategory subcategory = db.subcategories.Find(id);
+           // if (subcategory == null)
+           // {
+          //      return Content(id.ToString());
+            //}
             var group = db.subcategories.Where(d => d.catId == id);
             return View(group);
         }
+
         // GET: subcategories/Create
         public ActionResult Create()
         {
@@ -41,7 +48,7 @@ namespace review.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,img,catId")] subcategory subcategory)
+        public ActionResult Create([Bind(Include = "Id,Name,catId")] subcategory subcategory)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +80,7 @@ namespace review.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,img,catId")] subcategory subcategory)
+        public ActionResult Edit([Bind(Include = "Id,Name,catId")] subcategory subcategory)
         {
             if (ModelState.IsValid)
             {

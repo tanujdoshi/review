@@ -10,102 +10,107 @@ using review.Models;
 
 namespace review.Controllers
 {
-    public class subcategoriesController : Controller
+    public class oocategoriesController : Controller
     {
         private reviewmodeldb db = new reviewmodeldb();
 
-        // GET: subcategories
+        // GET: categories
         public ActionResult Index()
         {
-            return View(db.subcategories.ToList());
+            return View(db.categories.ToList());
         }
 
-        // GET: subcategories/Details/5
+        // GET: categories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var group = db.subcategories.Where(d => d.catId == id);
-            return View(group);
+            category category = db.categories.Find(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category);
         }
-        // GET: subcategories/Create
+
+        // GET: categories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: subcategories/Create
+        // POST: categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,img,catId")] subcategory subcategory)
+        public ActionResult Create([Bind(Include = "Id,Name")] category category)
         {
             if (ModelState.IsValid)
             {
-                db.subcategories.Add(subcategory);
+                db.categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(subcategory);
+            return View(category);
         }
 
-        // GET: subcategories/Edit/5
+        // GET: categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            subcategory subcategory = db.subcategories.Find(id);
-            if (subcategory == null)
+            category category = db.categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(subcategory);
+            return View(category);
         }
 
-        // POST: subcategories/Edit/5
+        // POST: categories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,img,catId")] subcategory subcategory)
+        public ActionResult Edit([Bind(Include = "Id,Name")] category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(subcategory).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(subcategory);
+            return View(category);
         }
 
-        // GET: subcategories/Delete/5
+        // GET: categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            subcategory subcategory = db.subcategories.Find(id);
-            if (subcategory == null)
+            category category = db.categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(subcategory);
+            return View(category);
         }
 
-        // POST: subcategories/Delete/5
+        // POST: categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            subcategory subcategory = db.subcategories.Find(id);
-            db.subcategories.Remove(subcategory);
+            category category = db.categories.Find(id);
+            db.categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,13 +7,23 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="@Url.Content("~/Content/css/main.css")" rel="stylesheet" type="text/css" />
+
     <link href="@Url.Content("~/Content/css/util.css")" rel="stylesheet" type="text/css" />
     @Scripts.Render("~/Contents/sjs/ll.js")
-    <link rel="stylesheet" href=""@Url.Content("~/Content/bootstrap.min.css")">
+    <link rel="stylesheet" href="" @Url.Content("~/Content/bootstrap.min.css") ">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title" content="Footwear Commerce Card UI Experiment - Derek Shirk CodePen">
+    <meta name="twitter:description" content="An experiment with a footwear focused e-commerce card layout and UI.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/derekshirk/codepen-template-assets/master/img/shoes/twitter-large-card.png">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.css'>
+    <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css'>
+
 
 </head>
 <body>
-   
+  
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -42,48 +52,88 @@
                     <ul class="nav navbar-nav">
                         <!--<li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
-                        <li>@Html.ActionLink("Give Suggestion", "Create", "suggestions")</li>
-                        <li>@Html.ActionLink("Category", "Index", "categories")</li>
+    <li>@Html.ActionLink("Give Suggestion", "Create", "suggestions")</li>
+    <li>@Html.ActionLink("Category", "Index", "categories")</li>
 
-                        @if (Session["email"] != null)
-                        {
-                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
-                        <li>@Html.ActionLink("" + Session["email"], "Index", "Account")</li>
-                        }
-                        else
-                        {
-                        <li>@Html.ActionLink("Register", "Registeruser", "Account")</li>
-                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                        }
-                        <li>
-                            @using (Html.BeginForm("search", "Home", FormMethod.Get ,  new { @class="navbar-form navbar-left" }))
-                            {
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="search" name="search" placeholder="Search Here">
+    @if (Session["email"] != null)
+    {
+        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+        <li>@Html.ActionLink("" + Session["email"], "Index", "Account")</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Register", "Registeruser", "Account")</li>
+        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+    }
+    <li>
+        @using (Html.BeginForm("search", "Home", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+        {
+            <div class="form-group">
+                <input type="text" class="form-control" id="search" name="search" placeholder="Search Here">
 
-                                <button type="submit" class="btn btn-primary mb-2">Search</button>
-                            </div>
-                            }
-                        </li>
+                <button type="submit" class="btn btn-primary mb-2">Search</button>
+            </div>
+        }
+    </li>
 
-                    </ul>
- }
-              </div>
-      </div>
-                            </div>
-                        </div>
+    </ul>
+}
+            </div>
+        </div>
+    </div>
+    </div>
 
-                    <div class="container body-content">
+<div class="container body-content">
 
-        @RenderBody()
-                        <hr />
-                        <footer>
-                            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                        </footer>
-                    </div>
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+</div>
 
-                    @Scripts.Render("~/bundles/jquery")
-                    @Scripts.Render("~/bundles/bootstrap")
-                    @RenderSection("scripts", required: false)
-                </body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js'></script>
+<script>
+    // Variables
+    var colorButton = $(".colors li");
+
+    colorButton.on("click", function () {
+        // console.log('clicked');
+
+        // Remove class from currently active button
+        $(".colors > li").removeClass("active-color");
+
+        // Add class active to clicked button
+        $(this).addClass("active-color");
+
+        // Get background color of clicked
+        var newColor = $(this).attr("data-color");
+        // alert(newColor);
+
+        // Change background of everything with class .bg-color
+        $(".merry-christmas").css("background-color", newColor);
+
+        // Change color of everything with class .text-color
+        // $(".text-color").css("color", newColor);
+    });
+
+    "use strict"; !function (t) { t.fn.tilt = function (s) { var i = function () { this.ticking || (requestAnimationFrame(g.bind(this)), this.ticking = !0) }, e = function () { t(this).on("mousemove", r), t(this).on("mouseenter", n), this.settings.reset && t(this).on("mouseleave", l) }, a = function () { var s = this; void 0 !== this.timeout && clearTimeout(this.timeout), t(this).css({ transition: this.settings.speed + "ms " + this.settings.easing }), this.settings.glare && this.glareElement.css({ transition: "opacity " + this.settings.speed + "ms " + this.settings.easing }), this.timeout = setTimeout(function () { t(s).css({ transition: "" }), s.settings.glare && s.glareElement.css({ transition: "" }) }, this.settings.speed) }, n = function (s) { this.ticking = !1, t(this).css({ "will-change": "transform" }), a.call(this), t(this).trigger("tilt.mouseEnter") }, h = function (s) { return "undefined" == typeof s && (s = { pageX: t(this).offset().left + t(this).outerWidth() / 2, pageY: t(this).offset().top + t(this).outerHeight() / 2 }), { x: s.pageX, y: s.pageY } }, r = function (t) { this.mousePositions = h(t), i.call(this) }, l = function () { a.call(this), this.reset = !0, i.call(this), t(this).trigger("tilt.mouseLeave") }, o = function () { var s = t(this).width(), i = t(this).height(), e = t(this).offset().left, a = t(this).offset().top, n = (this.mousePositions.x - e) / s, h = (this.mousePositions.y - a) / i, r = (this.settings.maxTilt / 2 - n * this.settings.maxTilt).toFixed(2), l = (h * this.settings.maxTilt - this.settings.maxTilt / 2).toFixed(2), o = Math.atan2(this.mousePositions.x - (e + s / 2), -(this.mousePositions.y - (a + i / 2))) * (180 / Math.PI); return { tiltX: r, tiltY: l, percentageX: 100 * n, percentageY: 100 * h, angle: o } }, g = function () { return this.transforms = o.call(this), this.reset ? (this.reset = !1, t(this).css("transform", "perspective(" + this.settings.perspective + "px) rotateX(0deg) rotateY(0deg)"), void (this.settings.glare && (this.glareElement.css("transform", "rotate(180deg) scale(1.75)"), this.glareElement.css("opacity", "" + this.settings.maxGlare / 4)))) : (t(this).css("transform", "perspective(" + this.settings.perspective + "px) rotateX(" + ("x" === this.settings.axis ? 0 : this.transforms.tiltY) + "deg) rotateY(" + ("y" === this.settings.axis ? 0 : this.transforms.tiltX) + "deg) scale3d(" + this.settings.scale + "," + this.settings.scale + "," + this.settings.scale + ")"), this.settings.glare && (this.glareElement.css("transform", "rotate(" + this.transforms.angle + "deg) scale(1.75)"), this.glareElement.css("opacity", "" + this.transforms.percentageY * this.settings.maxGlare / 100)), t(this).trigger("change", [this.transforms]), void (this.ticking = !1)) }, c = function () { if (!this.settings.glarePrerender) { t(this).append('<div class="js-tilt-glare"><div class="js-tilt-glare-inner"></div></div>'), this.glareElementWrapper = t(this).find(".js-tilt-glare"), this.glareElement = t(this).find(".js-tilt-glare-inner"); var s = { position: "absolute", top: "0", left: "0", width: "100%", height: "100%" }; this.glareElementWrapper.css(s).css({ overflow: "hidden" }), this.glareElement.css(s).css({ "background-image": "linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)", opacity: "" + this.settings.maxGlare / 2, transform: "rotate(180deg) scale(1.75)" }) } }; return t.fn.tilt.destroy = function () { t(this).each(function () { t(this).find(".js-tilt-glare").remove(), t(this).css({ "will-change": "", transform: "" }), t(this).off("mousemove mouseenter mouseleave") }) }, t.fn.tilt.getValues = function () { var s = []; return t(this).each(function () { this.mousePositions = h.call(this), s.push(o.call(this)) }), s }, t.fn.tilt.reset = function () { t(this).each(function () { var s = this; this.mousePositions = h.call(this), this.settings = t(this).data("settings"), l.call(this), setTimeout(function () { s.reset = !1 }, this.settings.transition) }) }, this.each(function () { var i = this; this.settings = t.extend({ maxTilt: t(this).is("[data-tilt-max]") ? t(this).data("tilt-max") : 20, perspective: t(this).is("[data-tilt-perspective]") ? t(this).data("tilt-perspective") : 300, easing: t(this).is("[data-tilt-easing]") ? t(this).data("tilt-easing") : "cubic-bezier(.03,.98,.52,.99)", scale: t(this).is("[data-tilt-scale]") ? t(this).data("tilt-scale") : "1", speed: t(this).is("[data-tilt-speed]") ? t(this).data("tilt-speed") : "400", transition: !t(this).is("[data-tilt-transition]") || t(this).data("tilt-transition"), axis: t(this).is("[data-tilt-axis]") ? t(this).data("tilt-axis") : null, reset: !t(this).is("[data-tilt-reset]") || t(this).data("tilt-reset"), glare: !!t(this).is("[data-tilt-glare]") && t(this).data("tilt-glare"), maxGlare: t(this).is("[data-tilt-maxglare]") ? t(this).data("tilt-maxglare") : 1 }, s), this.init = function () { t(i).data("settings", i.settings), i.settings.glare && c.call(i), e.call(i) }, this.init() }) }, t("[data-tilt]").tilt() }(jQuery);
+
+
+    // $('.card').tilt({
+    //     // axis: X
+    // });
+    // }(jQuery);
+
+    AOS.init({
+        duration: 1200,
+    })
+//# sourceURL=pen.js
+</script>
+</body>
 </html>
