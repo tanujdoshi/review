@@ -4,34 +4,30 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<html>
+<head>
+    <link href="@Url.Content("~/Content/css/cat.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="wrapper">
+        <h1>sub-Categories</h1>
 
-<div>
-    <h4>subcategory</h4>
-    <hr />
-    <table class="table">
-        <td>
-            @Html.DisplayNameFor(model => model.Name)
-        </td>
-        <td>
-            @Html.DisplayNameFor(model => model.img)
-         </td>
-        <td>
-            @Html.DisplayNameFor(model => model.catId)
-        </td>
-        @foreach (var i in Model)
-        {
-            <tr>
-                <td>
 
-                    @Html.ActionLink(i.Name, "Details", "products", new { id = i.Id }, null)
-                </td>
-                <td>   @Html.DisplayFor(model => i.img)</td>
-                <td>
-                    @Html.DisplayFor(model => i.catId)
-                </td>
-            </tr>
-        }
-    </table>
-  
-</div>
+        <div class="clear"></div>
+        <!-- items -->
+        <div class="items">
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <img src=" @Url.Content(item.img) " width="250px" height="250px" alt="item" />
+                    <h2>  @Html.ActionLink(item.Name, "Details", "products", new { id = item.Id }, null)</h2>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>
