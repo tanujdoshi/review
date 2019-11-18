@@ -82,34 +82,45 @@ namespace review.Controllers
         [HttpPost]
         public ActionResult Registeruser(user model)
         {
-            try
+            using (var context = new reviewmodeldb())
             {
-                var context = new reviewmodeldb();
+                // bool isValid = context.Users.Any(x => x.email == model.email && x.Password == model.Password);
+
                 context.Users.Add(model);
                 context.SaveChanges();
-
-
-
-                return RedirectToAction("Login");
+                ModelState.AddModelError("", "Something Went Wrong!!");
+                return RedirectToAction("Login", "Account");
+              //  return View();
             }
-            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-            {
-                Exception raise = dbEx;
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        string message = string.Format("{0}:{1}",
-                            validationErrors.Entry.Entity.ToString(),
-                            validationError.ErrorMessage);
-                        // raise a new exception nesting  
-                        // the current instance as InnerException  
-                        raise = new InvalidOperationException(message, raise);
-                    }
-                }
-                throw raise;
-            }
-            // return View();
+
+            /* try
+             {
+                 var context = new reviewmodeldb();
+                 context.Users.Add(model);
+                 context.SaveChanges();
+
+
+
+                 return RedirectToAction("Login");
+             }
+             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+             {
+                 Exception raise = dbEx;
+                 foreach (var validationErrors in dbEx.EntityValidationErrors)
+                 {
+                     foreach (var validationError in validationErrors.ValidationErrors)
+                     {
+                         string message = string.Format("{0}:{1}",
+                             validationErrors.Entry.Entity.ToString(),
+                             validationError.ErrorMessage);
+                         // raise a new exception nesting  
+                         // the current instance as InnerException  
+                         raise = new InvalidOperationException(message, raise);
+                     }
+                 }
+                 throw raise;
+             }
+             // return View();*/
         }
         public ActionResult Logout()
         {

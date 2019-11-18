@@ -5,69 +5,45 @@
     ViewBag.Title = "Search";
 }
 
-@if (ViewBag.flag == "false1")
-{
-    <h3>You Entered Empty String</h3>
-}
-else
-{
-    if (ViewBag.flag == "false2")
-    {
-        <h3>Records Not Found</h3>
-    }
-    else
-    {
-        <h2>Search Details</h2>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.productname)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.img)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.catId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.subcatId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Websites)
-                </th>
-                <th></th>
-            </tr>
-            @foreach (var i in Model)
+    <html>
+    <head>
+        <link href="@Url.Content("~/Content/css/cat.css")" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        @if (ViewBag.flag == "false1")
+        {
+            <h3>You Entered Empty String</h3>
+        }
+        else
+        {
+            if (ViewBag.flag == "false2")
             {
-                <tr>
+                <h3>Records Not Found</h3>
+            }
+            else
+            { <div class="wrapper">
+                    <h1>Search Result</h1>
 
-                    <td>
-                        @Html.ActionLink(i.productname, "Details", "reviews", new { id = i.Id }, null)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => i.img)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => i.catId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => i.subcatId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => i.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => i.Websites)
-                    </td>
 
-                </tr>
+                    <div class="clear"></div>
+                    <!-- items -->
+                    <div class="items">
+                        @foreach (var item in Model)
+                        {
+                            <div class="item">
+                                <img src=" @Url.Content(item.img) " width="250px" height="250px" alt="item" />
+                                <h2>  @Html.ActionLink(item.productname, "Details", "reviews", new { id = item.Id }, null)</h2>
+                            </div>
+                        }
+                    </div>
+                </div>
             }
 
-            </table>
 
-    }
-}
 
+        }
+        
+
+
+    </body>
+    </html>

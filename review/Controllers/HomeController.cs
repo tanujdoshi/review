@@ -11,11 +11,10 @@ namespace review.Controllers
         private reviewmodeldb db = new reviewmodeldb();
         public ActionResult Index()
         {
+            var pro = db.Products.OrderByDescending(r => r.Id).Take(4);
+            ViewBag.p = pro;
             var lastFiveProducts = db.Reviews.OrderByDescending(p => p.Id).Take(2);
-
-            var dd = db.Products.OrderByDescending(p => p.Id).Take(4);
-            ViewBag.lp = lastFiveProducts;
-            return View(dd);
+            return View(lastFiveProducts);
         }
         public ActionResult Search(string search)
         {

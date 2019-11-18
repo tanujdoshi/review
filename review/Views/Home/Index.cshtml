@@ -1,4 +1,4 @@
-﻿@model IEnumerable<review.Models.product>
+﻿@model IEnumerable<review.Models.Review>
 
 @{
     ViewBag.Title = "Home Page";
@@ -122,16 +122,19 @@
                 <div class="text-center">
                     <h2>Latest Products</h2>
                 </div>
-                @foreach (var item in Model)
+                @foreach (var item in ViewBag.p)
                 {
 
 
-                    <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-                        <img src=" @Url.Content(item.img) " width="250px" height="250px" alt="item" />
-                        <h2> @Html.DisplayFor(model => item.productname) </h2>
-                        @* <h2>  @Html.ActionLink(item.Name, "Details", "products", new { id = item.Id }, null)</h2>*@
+            <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <img src=" @Url.Content(item.img) " width="250px" height="250px" alt="item" />
+                @{
+                    string s = @item.productname.ToString();
+                }
+                <p>@Html.ActionLink(s, "Details", "reviews", new { id = @item.Id }, null)</p>
+                @* <h2>  @Html.ActionLink(item.Name, "Details", "products", new { id = item.Id }, null)</h2>*@
 
-                    </div>
+            </div>
 
 
                 }
@@ -141,32 +144,31 @@
         </div>
         <center>
             <h2>Latest Reviews</h2>
-            @foreach (var c in ViewBag.lp)
+            @foreach (var x in Model)
             {
                 <div class="container">
                     <div class="left-text hidden-xs">
                         <em>
                             <p>
-
-                                @c.Product.productname
+                                @Html.DisplayFor(model => x.Product.productname)
                             </p>
                             <p>
-                                @c.user.name
-
+                                @Html.DisplayFor(model => x.user.name)
                             </p>
                             <p>
-
-                                @c.content
+                                @Html.DisplayFor(model => x.content)
                             </p>
-                            @for (int i = 0; i < @c.rating; i++)
+                            @for (int i = 0; i < x.rating; i++)
                             {
                                 <span class="glyphicon glyphicon-star" style="color:yellow"></span>
                             }
-                            @for (int i = @c.rating; i < 5; i++)
+                            @for (int i = x.rating; i < 5; i++)
                             {
                                 <span class="glyphicon glyphicon-star-empty"></span>
                             }
-
+                            <p>
+                                @Html.DisplayFor(model => x.dape_post)
+                            </p>
                         </em>
                     </div>
                     <hr>
