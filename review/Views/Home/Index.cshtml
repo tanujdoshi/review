@@ -1,322 +1,287 @@
-﻿@{
+﻿@model IEnumerable<review.Models.product>
+
+@{
     ViewBag.Title = "Home Page";
 }
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <link href="@Url.Content("~/Content/css/pr.css")" rel="stylesheet" type="text/css" />
-    </head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Bootstrap -->
+    <link href="@Url.Content("~/Content/css1/bootstrap.min.css")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css1/font-awesome.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css1/animate.css")">
+    <link href="@Url.Content("~/Content/css1/animate.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css1/style.css")" rel="stylesheet" />
+    
+    <!-- =======================================================
+      Theme Name: Day
+      Theme URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
+      Author: BootstrapMade
+      Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+
 <body>
 
+    <header>
+        <center>
+            <h1 style="color:black;">
+                Online Review System
+            </h1>
+        </center>
+        <!--/header-->
+    </header>
+    <hr>
 
-    
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div class="clear"></div>
+    <!-- items -->
+    <!--/ items -->
     </div>
-    <div class="group group-three">
-        <div class="group--container">
+    <!--/ wrapper -->
+    <div class="slider">
+        <div id="about-slider">
+            <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators visible-xs">
+                    <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-slider" data-slide-to="1"></li>
+                    <li data-target="#carousel-slider" data-slide-to="2"></li>
+                </ol>
 
-            <div class="group--title" data-aos="zoom-out-up" data-aos-offset="500">
-                <h2>Air Max Premium</h2>
-                <div class="group--subtitle">
-                    If the Shoe Fits Hover It.
-                    <!--  If the Shoe Fits Card UI Experiment -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="~/Content/img/slide.jpg" class="img-responsive" alt="">
+                        <div class="carousel-caption">
+                            <h3>Know your products</h3>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="~/Content/img/slide.jpg" class="img-responsive" alt="">
+                        <div class="carousel-caption">
+                            <h3>Get your Review</h3>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="~/Content/img/slide.jpg" class="img-responsive" alt="">
+                        <div class="carousel-caption">
+                            <h3>Review you Want</h3>
+                        </div>
+                    </div>
                 </div>
+
+                <a class="left carousel-control hidden-xs" href="#carousel-slider" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+
+                <a class=" right carousel-control hidden-xs" href="#carousel-slider" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
             </div>
+            <!--/#carousel-slider-->
+        </div>
+        <!--/#about-slider-->
+    </div>
+    <!--/#slider-->
 
-            <div class="card--style2 card--one" data-aos="fade-up">
-
-                <div class="shoe--info">
-                    <span class="shoe--name">
-                        NIKE AIR MAX PREMIUM
-                    </span>
-                    <span class="shoe--price">
-                        $150
-                    </span>
-                </div>
-
-                <div class="shoe">
-                    <img src="~/Content/images/shoe.png" alt="nike air max premium red" />
-                </div>
-
-                <div class="shoe--colors">
-
-                    <ul class="colors">
-                        <li data-color="#F5624D"></li>
-                        <li data-color="#CC231E" class="active-color"></li>
-                        <li data-color="#34A65F"></li>
-                    </ul>
-
-                </div>
-
+    <div class="services">
+        <div class="container">
+            <div class="text-center">
+                <h2>Services</h2>
             </div>
-
-            <div class="card--style2 card--two" data-aos="fade-up">
-
-                <div class="shoe--info">
-                    <span class="shoe--name">
-                        NIKE AIR MAX ESSENTIAL
-                    </span>
-                    <span class="shoe--price">
-                        $150
-                    </span>
-                </div>
-
-                <div class="shoe">
-                    <img src="https://bit.ly/2kRrQxP" alt="nike air max essential black" />
-                </div>
-
-
-                <div class="shoe--colors">
-
-                    <ul class="colors">
-                        <li data-color="#F5624D"></li>
-                        <li data-color="#CC231E" class="active-color"></li>
-                        <li data-color="#34A65F"></li>
-                    </ul>
-
-                </div>
-
+            <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <i class="fa fa-heart-o"></i>
+                <h3>Categories</h3>
+                <p>All the categories you want</p>
             </div>
-
-            <div class="card--style2 card--three" data-aos="fade-up">
-
-                <div class="shoe--info">
-                    <span class="shoe--name">
-                        NIKE AIR MAX 90
-                    </span>
-                    <span class="shoe--price">
-                        $150
-                    </span>
-                </div>
-
-                <div class="shoe">
-                    <img src="https://bit.ly/2kRsdIN" alt="nike air max 90" />
-                </div>
-
-                <div class="shoe--colors">
-
-                    <ul class="colors">
-                        <li data-color="#F5624D"></li>
-                        <li data-color="#CC231E" class="active-color"></li>
-                        <li data-color="#34A65F"></li>
-                    </ul>
-
-                </div>
-
+            <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <i class="fa fa-cloud"></i>
+                <h3>SubCategories</h3>
+                <p>Many SubCategories</p>
             </div>
-
-            <div class="shop-all">
-                <button class="button">shop collection</button>
+            <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
+                <i class="fa fa-book"></i>
+                <h3>Products</h3>
+                <p>All your necessary products</p>
             </div>
-
+            <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms">
+                <i class="fa fa-gear"></i>
+                <h3>Reviews</h3>
+                <p>Your Favourite Reviews</p>
+            </div>
         </div>
     </div>
-    <!--Current 2nd Group -->
-    <div class="group group-one">
-        <div class="group--container">
-
-            <div class="group--title" data-aos="fade-up">
-                <h2>Air Max Premium</h2>
-                <div class="group--subtitle">
-                    A sample card UI layout.
+  
+        <div class="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Latest Products</h2>
                 </div>
+                @foreach (var item in Model)
+                {
+
+
+                    <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <img src=" @Url.Content(item.img) " width="250px" height="250px" alt="item" />
+                        <h2> @Html.DisplayFor(model => item.productname) </h2>
+                        @* <h2>  @Html.ActionLink(item.Name, "Details", "products", new { id = item.Id }, null)</h2>*@
+
+                    </div>
+
+
+                }
+
+
             </div>
-
-            <div class="card card--one">
-
-                <div class="shoe">
-                    <img src="~/Content/images/rev1.jpg" alt="nike air max premium red" />
-                </div>
-
-                <div class="shoe--colors">
-
-                    <ul class="colors">
-                        <li data-color="#F5624D"></li>
-                        <li data-color="#CC231E" class="active-color"></li>
-                        <li data-color="#34A65F"></li>
-                    </ul>
-
-                    <button class="buy-btn">Add to Cart</button>
-                </div>
-
-                <div class="shoe--info">
-                    <span class="shoe--name">NIKE AIR MAX PREMIUM</span>
-                    <span class="shoe--price"> $150 </span>
-                </div>
-            </div>
-
-
-            <div class="card card--two">
-
-                <div class="shoe">
-                    <img src="https://bit.ly/2kRrQxP" alt="nike air max essential black" />
-                </div>
-
-                <div class="shoe--colors">
-
-                    <ul class="colors">
-                        <li data-color="#F5624D"></li>
-                        <li data-color="#CC231E" class="active-color"></li>
-                        <li data-color="#34A65F"></li>
-                    </ul>
-
-                    <button class="buy-btn">Add to Cart</button>
-                </div>
-
-                <div class="shoe--info">
-                    <span class="shoe--name">NIKE AIR MAX PREMIUM</span>
-                    <span class="shoe--price"> $150 </span>
-                </div>
-            </div>
-
-            <div class="card">
-
-                <div class="shoe">
-                    <img src="https://bit.ly/2kRsdIN" alt="nike air max 90 blue and black" />
-                </div>
-
-                <div class="shoe--colors">
-
-                    <ul class="colors">
-                        <li data-color="#F5624D"></li>
-                        <li data-color="#CC231E" class="active-color"></li>
-                        <li data-color="#34A65F"></li>
-                    </ul>
-
-                    <button class="buy-btn">Add to Cart</button>
-                </div>
-
-                <div class="shoe--info">
-                    <span class="shoe--name">NIKE AIR MAX PREMIUM</span>
-                    <span class="shoe--price"> $150 </span>
-                </div>
-            </div>
-            <div class="card card--one">
-
-                <div class="shoe">
-                    <img src="https://bit.ly/2kRsdIN" alt="nike air max premium red" />
-                </div>
-
-                <div class="shoe--colors">
-
-                    <ul class="colors">
-                        <li data-color="#F5624D"></li>
-                        <li data-color="#CC231E" class="active-color"></li>
-                        <li data-color="#34A65F"></li>
-                    </ul>
-
-                    <button class="buy-btn">Add to Cart</button>
-                </div>
-
-                <div class="shoe--info">
-                    <span class="shoe--name">NIKE AIR MAX PREMIUM</span>
-                    <span class="shoe--price"> $150 </span>
-                </div>
-            </div>
-
         </div>
-    </div>
+        <center>
+            <h2>Latest Reviews</h2>
+            @foreach (var c in ViewBag.lp)
+            {
+                <div class="container">
+                    <div class="left-text hidden-xs">
+                        <em>
+                            <p>
 
-    <div class="group group-two">
-        <div class="group--container">
+                                @c.Product.productname
+                            </p>
+                            <p>
+                                @c.user.name
 
-            <div class="group--title">
-                <h2>Air Max Premium</h2>
-                <div class="group--subtitle">
-                    A sample card UI layout.
-                </div>
-            </div>
+                            </p>
+                            <p>
 
-            <div class="card card--one" data-aos="fade-right">
+                                @c.content
+                            </p>
+                            @for (int i = 0; i < @c.rating; i++)
+                            {
+                                <span class="glyphicon glyphicon-star" style="color:yellow"></span>
+                            }
+                            @for (int i = @c.rating; i < 5; i++)
+                            {
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            }
 
-                <div class="shoe">
-                    <img src="https://bit.ly/2lTBReR" alt="nike air max premium red" />
-                </div>
-
-                <div class="shoe--colors">
-
-                    <ul class="colors">
-                        <li data-color="#F5624D"></li>
-                        <li data-color="#CC231E" class="active-color"></li>
-                        <li data-color="#34A65F"></li>
-                    </ul>
-
-                    <button class="buy-btn">Add to Cart</button>
-                </div>
-
-                <div class="shoe--info">
-                    <span class="shoe--name">NIKE AIR MAX PREMIUM</span>
-                    <span class="shoe--price"> $150 </span>
-                </div>
-            </div>
-
-            <div class="card card--two" data-aos="zoom-out">
-
-                <div class="shoe">
-                    <img src="https://bit.ly/2kRrQxP" alt="nike air max premium red" />
+                        </em>
+                    </div>
+                    <hr>
                 </div>
 
-                <div class="shoe--colors">
+            }
+        </center>
+        @* <center>
+                <h2>Latest Reviews</h2>
+                @foreach (var x in Model)
+                {
+                    <div class="container">
+                        <div class="left-text hidden-xs">
+                            <em>
+                                <p>
+                                    @Html.DisplayFor(model => x.Product.productname)
+                                </p>
+                                <p>
+                                    @Html.DisplayFor(model => x.user.name)
+                                </p>
+                                <p>
+                                    @Html.DisplayFor(model => x.content)
+                                </p>
+                                @for (int i = 0; i < x.rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star" style="color:yellow"></span>
+                                }
+                                @for (int i = x.rating; i < 5; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                }
+                                <p>
+                                    @Html.DisplayFor(model => x.dape_post)
+                                </p>
+                            </em>
+                        </div>
+                        <hr>
+                    </div>
 
-                    <ul class="colors">
-                        <li data-color="#F5624D"></li>
-                        <li data-color="#CC231E" class="active-color"></li>
-                        <li data-color="#34A65F"></li>
-                    </ul>
+                }
+            </center>*@
 
-                    <button class="buy-btn">Add to Cart</button>
-                </div>
 
-                <div class="shoe--info">
-                    <span class="shoe--name">NIKE AIR MAX PREMIUM</span>
-                    <span class="shoe--price"> $150 </span>
-                </div>
-            </div>
-
-            <div class="card" data-aos="fade-left">
-                <div class="shoe">
-                    <img src="https://bit.ly/2kRsdIN" alt="nike air max 90" />
-                    <div class="shoe--colors">
-                        <ul class="colors">
-                            <li data-color="#F5624D"></li>
-                            <li data-color="#CC231E" class="active-color"></li>
-                            <li data-color="#34A65F"></li>
+        <footer>
+            <div class="container">
+                <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <h4>About Us</h4>
+                   
+                    <div class="contact-info">
+                        <ul>
+                            <li><i class="fa fa-home fa"></i>DDIT,Collage Road,Nadiad,India </li>
+                            <li><i class="fa fa-phone fa"></i> +91 7043901878</li>
+                            <li><i class="fa fa-envelope fa"></i>reviewhere@gmail.com</li>
                         </ul>
-                        <button class="buy-btn">Add to Cart</button>
                     </div>
-
-                    <div class="shoe--info">
-                        <span class="shoe--name">NIKE AIR MAX PREMIUM</span>
-                        <span class="shoe--price"> $150 </span>
-                    </div>
-
                 </div>
-            </div>
 
+                <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="text-center">
+                        <h4>Photo Gallery</h4>
+                        <ul class="sidebar-gallery">
+                            <li><a href="#"><img src="~/Content/img/gallery1.png" alt="" /></a></li>
+                            <li><a href="#"><img src="~/Content/img/gallery2.png" alt="" /></a></li>
+                            <li><a href="#"><img src="~/Content/img/gallery3.png" alt="" /></a></li>
+                            <li><a href="#"><img src="~/Content/img/gallery4.png" alt="" /></a></li>
+                            <li><a href="#"><img src="~/Content/img/gallery5.png" alt="" /></a></li>
+                            <li><a href="#"><img src="~/Content/img/gallery6.png" alt="" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
+                    <div class="">
+                        <h4>Newsletter Registration</h4>
+                        <p>Subscribe today to receive the latest Day news via email. You may unsubscribe from this service at any time</p>
+                        <div class="btn-gamp">
+                            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter Email">
+                        </div>
+                        <div class="btn-gamp">
+                            <a type="submit" class="btn btn-default">Subscribe</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+        <div class="sub-footer">
+            <div class="container">
+                <div class="social-icon">
+                    <div class="col-md-4">
+                        <ul class="social-network">
+                            <li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>
-    </div>
-</body>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="~/Content/js1/jquery.min.js"></script>
+        <script src="~/Content/js1/jquery-migrate.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="~/Content/js1/bootstrap.min.js"></script>
+        <script src="~/Content/js1/wow.min.js"></script>
+        <script>
+            wow = new WOW({}).init();
+        </script>
+    </body>
+
 </html>
