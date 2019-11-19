@@ -1,0 +1,151 @@
+﻿@using review.Models;
+@model Tuple<product, Review>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div class="card" style="overflow-x: none;">
+    <div class="row no-gutters">
+        <aside class="col-sm-5 border-right" style="border: 1px solid black;">
+            <article class="gallery-wrap">
+                <div class="img-big-wrap">
+                    <div>
+                        <a href="images/items/1.jpg" data-fancybox="">
+
+                            <img src="@Url.Content(@Model.Item1.img)" width="470px" height="400px" />
+                        </a>
+                    </div>
+                </div> <!-- slider-product.// -->
+                <!--                <div class="img-small-wrap">
+                            <div class="item-gallery"> <img src="images/items/1.jpg"></div>
+                            <div class="item-gallery"> <img src="images/items/2.jpg"></div>
+                            <div class="item-gallery"> <img src="images/items/3.jpg"></div>
+                            <div class="item-gallery"> <img src="images/items/4.jpg"></div>
+                        </div> <!-- slider-nav.// -->
+            </article> <!-- gallery-wrap .end// -->
+            <br>
+            <hr>
+            <h2>Give Your Review Here</h2>
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Review For This Product</label>
+                            <input type="text" class="form-control" id="content" name="content" placeholder="Give Review Here">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Ratings</label>
+                            <select class="form-control" id="rating" name="rating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        @Html.HiddenFor(model => model.Item1.Id)
+                        <button type="submit" class="btn btn-primary mb-2">Review</button>
+
+                    }
+                </div>
+            }
+
+
+        </aside>
+        <aside class="col-sm-7">
+            <article class="p-5">
+                <h3 class="title mb-3">  @Html.DisplayFor(model => model.Item1.productname)</h3>
+
+                <div class="mb-3">
+                    <var class="price h3 text-warning">
+                        <span class="currency">Website:-</span><span class="num"><a href="@Url.Content(Model.Item1.Websites)">@Html.DisplayFor(model => model.Item1.Websites)</a> </span>
+                    </var>
+
+                </div> <!-- price-detail-wrap .// -->
+                <dl>
+                    <dt>Description</dt>
+                    <dd>
+                        <p>
+
+                            @Html.DisplayFor(model => model.Item1.Description)
+
+                        </p>
+                    </dd>
+                </dl>
+               
+                
+                 
+               
+                    <dl>
+                        <dt>Category</dt>
+                        <dd>
+                            <p>
+
+                                @Html.DisplayFor(model => model.Item1.catId)
+
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>Category</dt>
+                        <dd>
+                            <p>
+
+                                @Html.DisplayFor(model => model.Item1.subcatId)
+
+                            </p>
+                        </dd>
+                    </dl>
+
+
+                    <div class="row" style="padding: 2%; border-top: 1px solid grey;border-left: 1px solid grey;">
+
+                        <div style="background-color: dimgrey; padding: 0.1% 1% 1% 1%; margin: 0 0 4% 0;">
+                            <h2>Reviews</h2>
+                        </div>
+                        @foreach (var x in ViewBag.pass)
+                        {
+
+                            <div class="media" style="margin: 2% 0 0 2%; border-bottom: 1px solid grey; padding: 1% 1% 4% 1%;">
+                                <div class="media-body">
+                                    <div class="pull-right">  @x.dape_post</div>
+                                    <h3 class="media-heading" style="margin-bottom: 2%"><b> @x.user.name</b> </h3> 
+                                    @for (int i=0;i<x.rating; i++)
+                                    {
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    }
+                                    @for (int i=x.rating;i<5; i++)
+                                    {
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                    }
+                                  
+
+                                    <div class="media-description text-muted">
+                                        @x.content
+                                    </div>
+                                </div>
+                            </div>
+
+                                
+                        }
+
+
+
+
+
+                    </div>
+
+
+</article> <!-- card-body.// -->
+        </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+</div> <!-- card.// -->
+

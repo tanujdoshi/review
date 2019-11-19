@@ -116,33 +116,172 @@
             </div>
         </div>
     </div>
-  
-        <div class="services">
+
+    <div class="services">
+        <div class="container">
+            <div class="text-center">
+                <h2>Latest Products</h2>
+            </div>
+            @foreach (var item in ViewBag.p)
+            {
+
+
+                <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <img src=" @Url.Content(item.img) " width="250px" height="250px" alt="item" />
+                    @{
+                        string s = @item.productname.ToString();
+                    }
+                    <p>@Html.ActionLink(s, "Details", "reviews", new { id = @item.Id }, null)</p>
+                    @* <h2>  @Html.ActionLink(item.Name, "Details", "products", new { id = item.Id }, null)</h2>*@
+
+                </div>
+
+
+            }
+
+
+        </div>
+    </div>
+    <center>
+        <h2>Latest Reviews</h2>
+        @foreach (var x in Model)
+        {
+            <div class="container">
+                <div class="left-text hidden-xs">
+                    <em>
+                        <p>
+                            @Html.DisplayFor(model => x.Product.productname)
+                        </p>
+                        <p>
+                            @Html.DisplayFor(model => x.user.name)
+                        </p>
+                        <p>
+                            @Html.DisplayFor(model => x.content)
+                        </p>
+                        @for (int i = 0; i < x.rating; i++)
+                        {
+                            <span class="glyphicon glyphicon-star" style="color:yellow"></span>
+                        }
+                        @for (int i = x.rating; i < 5; i++)
+                        {
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        }
+                        <p>
+                            @Html.DisplayFor(model => x.dape_post)
+                        </p>
+                    </em>
+                </div>
+                <hr>
+            </div>
+
+        }
+    </center>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="heading-title text-center">
+                <h3 class="text-uppercase">Our Team </h3>
+                <p class="p-top-30 half-txt"> </p>
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="~/Content/images/tanuj.jpg" alt="team member" class="img-responsive">
+                    </div>
+                    <div class="team-hover">
+                        <div class="desk">
+                            <h4>Hi There !</h4>
+                            <p>I love to introduce myself as a hardcore Web Designer.</p>
+                        </div>
+                        <div class="s-link">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-title">
+                    <h5>Tanuj Doshi</h5>
+                   
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="~/Content/images/rushabh.jpg" alt="team member" class="img-responsive">
+                    </div>
+                    <div class="team-hover">
+                        <div class="desk">
+                            <h4>Hello World</h4>
+                            <p>I love to introduce myself as a hardcore Web Designer.</p>
+                        </div>
+                        <div class="s-link">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-title">
+                    <h5>Rushabh Dholakia</h5>
+                   
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="~/Content/images/neel.jpg" alt="team member" class="img-responsive">
+                    </div>
+                    <div class="team-hover">
+                        <div class="desk">
+                            <h4>I love to design</h4>
+                            <p>I love to introduce myself as a hardcore Web Designer.</p>
+                        </div>
+                        <div class="s-link">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-title">
+                    <h5>Neel Dani</h5>
+                 
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    @**<div class="services">
             <div class="container">
                 <div class="text-center">
-                    <h2>Latest Products</h2>
+                    <h2>Meet Our Team</h2>
                 </div>
-                @foreach (var item in ViewBag.p)
-                {
+                <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <img src="~/Content/images/tanuj.jpg" width="250px" height="200px" alt="item" />
 
+                    <p>Tanuj Doshi</p>
+                </div>
 
-            <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-                <img src=" @Url.Content(item.img) " width="250px" height="250px" alt="item" />
-                @{
-                    string s = @item.productname.ToString();
+                <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <img src="~/Content/images/rushabh.jpg" width="250px" height="250px" alt="item" />
+
+                    <p>Rushabh Dholakia</p>
+                </div>
+                <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <img src="~/Content/images/rushabh.jpg" width="250px" height="250px" alt="item" />
+
+                    <p>Neel Dani</p>
+                </div>
                 }
-                <p>@Html.ActionLink(s, "Details", "reviews", new { id = @item.Id }, null)</p>
-                @* <h2>  @Html.ActionLink(item.Name, "Details", "products", new { id = item.Id }, null)</h2>*@
+
 
             </div>
-
-
-                }
-
-
-            </div>
-        </div>
-        <center>
+        </div>*@
+    @* <center>
             <h2>Latest Reviews</h2>
             @foreach (var x in Model)
             {
@@ -175,115 +314,81 @@
                 </div>
 
             }
-        </center>
-        @* <center>
-                <h2>Latest Reviews</h2>
-                @foreach (var x in Model)
-                {
-                    <div class="container">
-                        <div class="left-text hidden-xs">
-                            <em>
-                                <p>
-                                    @Html.DisplayFor(model => x.Product.productname)
-                                </p>
-                                <p>
-                                    @Html.DisplayFor(model => x.user.name)
-                                </p>
-                                <p>
-                                    @Html.DisplayFor(model => x.content)
-                                </p>
-                                @for (int i = 0; i < x.rating; i++)
-                                {
-                                    <span class="glyphicon glyphicon-star" style="color:yellow"></span>
-                                }
-                                @for (int i = x.rating; i < 5; i++)
-                                {
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                }
-                                <p>
-                                    @Html.DisplayFor(model => x.dape_post)
-                                </p>
-                            </em>
-                        </div>
-                        <hr>
-                    </div>
-
-                }
-            </center>*@
+        </center>*@
 
 
-        <footer>
-            <div class="container">
-                <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h4>About Us</h4>
-                   
-                    <div class="contact-info">
-                        <ul>
-                            <li><i class="fa fa-home fa"></i>DDIT,Collage Road,Nadiad,India </li>
-                            <li><i class="fa fa-phone fa"></i> +91 7043901878</li>
-                            <li><i class="fa fa-envelope fa"></i>reviewhere@gmail.com</li>
-                        </ul>
-                    </div>
+    <footer>
+        <div class="container">
+            <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <h4>About Us</h4>
+
+                <div class="contact-info">
+                    <ul>
+                        <li><i class="fa fa-home fa"></i>DDIT,Collage Road,Nadiad,India </li>
+                        <li><i class="fa fa-phone fa"></i> +91 7043901878</li>
+                        <li><i class="fa fa-envelope fa"></i>reviewhere@gmail.com</li>
+                    </ul>
                 </div>
-
-                <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="text-center">
-                        <h4>Photo Gallery</h4>
-                        <ul class="sidebar-gallery">
-                            <li><a href="#"><img src="~/Content/img/gallery1.png" alt="" /></a></li>
-                            <li><a href="#"><img src="~/Content/img/gallery2.png" alt="" /></a></li>
-                            <li><a href="#"><img src="~/Content/img/gallery3.png" alt="" /></a></li>
-                            <li><a href="#"><img src="~/Content/img/gallery4.png" alt="" /></a></li>
-                            <li><a href="#"><img src="~/Content/img/gallery5.png" alt="" /></a></li>
-                            <li><a href="#"><img src="~/Content/img/gallery6.png" alt="" /></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
-                    <div class="">
-                        <h4>Newsletter Registration</h4>
-                        <p>Subscribe today to receive the latest Day news via email. You may unsubscribe from this service at any time</p>
-                        <div class="btn-gamp">
-                            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter Email">
-                        </div>
-                        <div class="btn-gamp">
-                            <a type="submit" class="btn btn-default">Subscribe</a>
-                        </div>
-
-                    </div>
-                </div>
-
             </div>
-        </footer>
 
-        <div class="sub-footer">
-            <div class="container">
-                <div class="social-icon">
-                    <div class="col-md-4">
-                        <ul class="social-network">
-                            <li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
-                        </ul>
-                    </div>
+            <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="text-center">
+                    <h4>Photo Gallery</h4>
+                    <ul class="sidebar-gallery">
+                        <li><a href="#"><img src="~/Content/img/gallery1.png" alt="" /></a></li>
+                        <li><a href="#"><img src="~/Content/img/gallery2.png" alt="" /></a></li>
+                        <li><a href="#"><img src="~/Content/img/gallery3.png" alt="" /></a></li>
+                        <li><a href="#"><img src="~/Content/img/gallery4.png" alt="" /></a></li>
+                        <li><a href="#"><img src="~/Content/img/gallery5.png" alt="" /></a></li>
+                        <li><a href="#"><img src="~/Content/img/gallery6.png" alt="" /></a></li>
+                    </ul>
                 </div>
-
-                
             </div>
+
+            <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
+                <div class="">
+                    <h4>Newsletter Registration</h4>
+                    <p>Subscribe today to receive the latest Day news via email. You may unsubscribe from this service at any time</p>
+                    <div class="btn-gamp">
+                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter Email">
+                    </div>
+                    <div class="btn-gamp">
+                        <a type="submit" class="btn btn-default">Subscribe</a>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
+    </footer>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="~/Content/js1/jquery.min.js"></script>
-        <script src="~/Content/js1/jquery-migrate.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="~/Content/js1/bootstrap.min.js"></script>
-        <script src="~/Content/js1/wow.min.js"></script>
-        <script>
-            wow = new WOW({}).init();
-        </script>
-    </body>
+    <div class="sub-footer">
+        <div class="container">
+            <div class="social-icon">
+                <div class="col-md-4">
+                    <ul class="social-network">
+                        <li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Content/js1/jquery.min.js"></script>
+    <script src="~/Content/js1/jquery-migrate.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Content/js1/bootstrap.min.js"></script>
+    <script src="~/Content/js1/wow.min.js"></script>
+    <script>
+        wow = new WOW({}).init();
+    </script>
+</body>
 
 </html>

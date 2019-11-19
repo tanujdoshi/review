@@ -68,7 +68,7 @@ namespace review.Controllers
                     Session["email"] = model.email;
                     FormsAuthentication.SetAuthCookie(model.email, false);
                     return RedirectToAction("Index", "Home");
-                }
+                    }
 
                 ModelState.AddModelError("", "Invalid username and password");
                 return View();
