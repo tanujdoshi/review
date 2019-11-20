@@ -66,7 +66,7 @@
 
                 <div class="mb-3">
                     <var class="price h3 text-warning">
-                        <span class="currency">Website:-</span><span class="num"><a href="@Url.Content(Model.Item1.Websites)">@Html.DisplayFor(model => model.Item1.Websites)</a> </span>
+                        <span class="currency">Website:-</span><span class="num"><a href="@Url.Content(Model.Item1.Websites)">@Html.DisplayFor(model => model.Item1.productname)</a> </span>
                     </var>
 
                 </div> <!-- price-detail-wrap .// -->
@@ -80,71 +80,81 @@
                         </p>
                     </dd>
                 </dl>
-               
-                
-                 
-               
-                    <dl>
-                        <dt>Category</dt>
-                        <dd>
-                            <p>
-
-                                @Html.DisplayFor(model => model.Item1.catId)
-
-                            </p>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>Category</dt>
-                        <dd>
-                            <p>
-
-                                @Html.DisplayFor(model => model.Item1.subcatId)
-
-                            </p>
-                        </dd>
-                    </dl>
 
 
-                    <div class="row" style="padding: 2%; border-top: 1px solid grey;border-left: 1px solid grey;">
 
-                        <div style="background-color: dimgrey; padding: 0.1% 1% 1% 1%; margin: 0 0 4% 0;">
-                            <h2>Reviews</h2>
-                        </div>
-                        @foreach (var x in ViewBag.pass)
-                        {
 
-                            <div class="media" style="margin: 2% 0 0 2%; border-bottom: 1px solid grey; padding: 1% 1% 4% 1%;">
-                                <div class="media-body">
-                                    <div class="pull-right">  @x.dape_post</div>
-                                    <h3 class="media-heading" style="margin-bottom: 2%"><b> @x.user.name</b> </h3> 
-                                    @for (int i=0;i<x.rating; i++)
-                                    {
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    }
-                                    @for (int i=x.rating;i<5; i++)
-                                    {
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                    }
-                                  
+                <dl>
+                    <dt>Category</dt>
+                    <dd>
+                        <p>
 
-                                    <div class="media-description text-muted">
-                                        @x.content
-                                    </div>
+                            @Html.DisplayFor(model => model.Item1.catId)
+
+                        </p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Sub Category</dt>
+                    <dd>
+                        <p>
+
+                            @Html.DisplayFor(model => model.Item1.subcatId)
+
+                        </p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Total Number Of Reiews</dt>
+                    <dd>
+                        <p>
+
+                           @ViewData["reviewcount"]
+
+                        </p>
+                    </dd>
+                </dl>
+
+
+                <div class="row" style="padding: 2%; border-top: 1px solid grey;border-left: 1px solid grey;">
+
+                    <div style="background-color: dimgrey; padding: 0.1% 1% 1% 1%; margin: 0 0 4% 0;">
+                        <h2>Reviews</h2>
+                    </div>
+                    @foreach (var x in ViewBag.pass)
+                    {
+
+                        <div class="media" style="margin: 2% 0 0 2%; border-bottom: 1px solid grey; padding: 1% 1% 4% 1%;">
+                            <div class="media-body">
+                                <div class="pull-right">  @x.dape_post</div>
+                                <h3 class="media-heading" style="margin-bottom: 2%"><b> @x.user.name</b> </h3>
+                                @for (int i = 0; i < x.rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star"></span>
+                                }
+                                @for (int i = x.rating; i < 5; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                }
+
+
+                                <div class="media-description text-muted">
+                                    @x.content
                                 </div>
                             </div>
-
-                                
-                        }
+                        </div>
 
 
+                    }
 
 
 
-                    </div>
 
 
-</article> <!-- card-body.// -->
+                </div>
+
+
+            </article> <!-- card-body.// -->
         </aside> <!-- col.// -->
     </div> <!-- row.// -->
 </div> <!-- card.// -->

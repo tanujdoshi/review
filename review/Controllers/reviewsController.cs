@@ -34,7 +34,10 @@ namespace review.Controllers
             }
             product pro = db.Products.Find(id);
             Review rev = db.Reviews.Find(id);
-            var rev1 = db.Reviews.Where(d => d.productId == id).ToList();
+            var rev1 = db.Reviews.Where(d => d.productId == id);
+            rev1 = rev1.OrderByDescending(x => x.dape_post);    
+            var c = rev1.Count();
+            ViewData["reviewcount"] = c;
             ViewBag.pass = rev1;
             var tup = new Tuple<product, Review>(pro, rev); 
           //  if (rev== null)
@@ -51,7 +54,7 @@ namespace review.Controllers
             {
                 Response.Write("<script>alert('Please Login Firs')</script>");
                 //Response.Redirect()
-                return Content("Please Login First");
+                return RedirectToAction("Login","Account");
             }
             else
             {

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using review.Models;
@@ -52,6 +53,43 @@ namespace review.Controllers
             {
                 db.suggestions.Add(suggestion);
                 db.SaveChanges();
+
+                try
+                {
+                    if (ModelState.IsValid)
+                    {
+                        var senderEmail = new MailAddress("tanujdoshi3920@gmail.com", "Tanuj DOshi");
+                        var receiverEmail = new MailAddress(suggestion.email, "Receiver");
+                        var password = "tanuj3920";
+                        var sub = "Thank You for your suggestion";
+                        var body = "Thank you For Suggestion "+suggestion.suggest+"We are back with this very soon!!";
+                        var smtp = new SmtpClient
+                        {
+                            Host = "smtp.gmail.com",
+                            Port = 587,
+                            EnableSsl = true,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            UseDefaultCredentials = false,
+                            Credentials = new NetworkCredential(senderEmail.Address, password)
+                        };
+                        using (var mess = new MailMessage(senderEmail, receiverEmail)
+                        {
+                            Subject = "Thank you",
+                            Body = body
+                        })
+                        {
+                            smtp.Send(mess);
+                        }
+                        Response.Write("<script>alert('Please Login Firs')</script>");
+                        return View();
+                    }
+                }
+                catch (Exception)
+                {
+                    ViewBag.Error = "Some Error";
+                }
+
+
                 return RedirectToAction("Index");
             }
 
