@@ -1,7 +1,7 @@
 ﻿@model review.Models.user
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "forgot";
 }
 <div class="limiter">
     <div class="container-login100">
@@ -27,22 +27,13 @@
 
                 </div>
                 @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-                <div class="wrap-input100 validate-input">
-                    <span class="btn-show-pass">
-                        <i class="zmdi zmdi-eye"></i>
-                    </span>
-
-                    @Html.PasswordFor(model => model.Password, new { placeholder = "Enter Password", htmlAttributes = new { @class = "form-control" } })
-
-
-                </div>
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+              
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">
-                            Login
+                            Send Otp
                         </button>
 
                     </div>
@@ -50,25 +41,19 @@
 
                 <div class="text-center p-t-115">
                     <span class="txt1">
-                        Don’t have an account?
+                        Got to
                     </span>
 
-                    @Html.ActionLink("Register", "forgot")
+                    @Html.ActionLink("Register", "Registeruser")
                 </div>
 
-                <div class="text-center p-t-115">
-                    <span class="txt1">
-                        Forgot Paasword?
-                    </span>
-
-                    @Html.ActionLink("Click Here", "forgot")
-                </div>
+              
             }
         </div>
     </div>
 </div>
 
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
