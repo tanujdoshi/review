@@ -33,6 +33,13 @@ namespace review.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             product pro = db.Products.Find(id);
+            var a = pro.catId;
+            category cat = db.categories.FirstOrDefault(x => x.Id == a);
+            ViewBag.catname = cat.Name;
+            var b = pro.subcatId;
+            subcategory scat = db.subcategories.FirstOrDefault(x => x.Id == b);
+            ViewBag.scatname = scat.Name;
+
             Review rev = db.Reviews.Find(id);
             var rev1 = db.Reviews.Where(d => d.productId == id);
             rev1 = rev1.OrderByDescending(x => x.dape_post);    

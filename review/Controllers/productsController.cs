@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -38,12 +39,39 @@ namespace review.Controllers
            // }
             return View(pt);
         }
-
-        // GET: products/Create
         public ActionResult Create()
         {
+            ViewBag.category = db.categories.ToList();
+            ViewBag.subcategory = db.subcategories.ToList();
             return View();
         }
+        public ActionResult Upload()
+        {
+            ViewBag.category = db.categories.ToList();
+            ViewBag.subcategory = db.subcategories.ToList();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase uploadfile)
+        {
+            if (uploadfile != null && uploadfile.FileName != "")
+            {
+                ViewBag.category = db.categories.ToList();
+                ViewBag.subcategory = db.subcategories.ToList();
+                string pic = Path.GetFileName(uploadfile.FileName);
+                string p = Path.Combine(Server.MapPath("~/Content/images/"), pic);
+                uploadfile.SaveAs(p);
+                ViewBag.fil = "~/Content/images/" + pic;
+
+            }
+            else
+            {
+                ViewBag.fil = "nullk";
+            }
+            return View("Create");
+        }
+        // GET: products/Create
+       
 
         // POST: products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -54,12 +82,16 @@ namespace review.Controllers
         {
             if (ModelState.IsValid)
             {
+               // ViewBag.i = product.img;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(product);
+            else
+            {
+                return View("Index");
+            }
+            
         }
 
         // GET: products/Edit/5

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -34,7 +35,28 @@ namespace review.Controllers
             }
             return View(category);
         }
+        public ActionResult Upload()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase uploadfile)
+        {
+            if (uploadfile != null && uploadfile.FileName != "")
+            {
+                ViewBag.catt = db.categories.ToList();
+                string pic = Path.GetFileName(uploadfile.FileName);
+                string p = Path.Combine(Server.MapPath("~/Content/images/"), pic);
+                uploadfile.SaveAs(p);
+                ViewBag.fil = "~/Content/images/" + pic;
 
+            }
+            else
+            {
+                ViewBag.fil = "nullk";
+            }
+            return View("Create");
+        }
         // GET: categories/Create
         public ActionResult Create()
         {
@@ -55,7 +77,7 @@ namespace review.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View("Index");
         }
 
         // GET: categories/Edit/5

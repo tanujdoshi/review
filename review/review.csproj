@@ -287,6 +287,9 @@
     <Content Include="Views\Account\forgot.cshtml" />
     <Content Include="Views\Account\forgotone.cshtml" />
     <Content Include="Views\Account\changepass.cshtml" />
+    <Content Include="Views\products\Upload.cshtml" />
+    <Content Include="Views\subcategories\Upload.cshtml" />
+    <Content Include="Views\categories\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

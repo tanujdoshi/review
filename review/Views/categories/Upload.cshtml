@@ -1,0 +1,17 @@
+﻿@model review.Models.category
+
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+
+@using (Html.BeginForm("Upload", "categories", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="editor-label">
+        @Html.LabelFor(model => model.img)
+        <input type="file" name="uploadfile" />
+        <input type="submit" value="Upload" />
+        <p>@ViewBag.fil</p>
+    </div>
+}

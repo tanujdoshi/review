@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,6 +18,7 @@ namespace review.Controllers
         // GET: subcategories
         public ActionResult Index()
         {
+           
             return View(db.subcategories.ToList());
         }
 
@@ -30,9 +32,33 @@ namespace review.Controllers
             var group = db.subcategories.Where(d => d.catId == id);
             return View(group);
         }
+        public ActionResult Upload()
+        {
+            ViewBag.catt = db.categories.ToList();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase uploadfile)
+        {
+            if (uploadfile != null && uploadfile.FileName != "")
+            {
+                ViewBag.catt = db.categories.ToList();
+                string pic = Path.GetFileName(uploadfile.FileName);
+                string p = Path.Combine(Server.MapPath("~/Content/images/"), pic);
+                uploadfile.SaveAs(p);
+                ViewBag.fil = "~/Content/images/" + pic;
+
+            }
+            else
+            {
+                ViewBag.fil = "nullk";
+            }
+            return View("Create");
+        }
         // GET: subcategories/Create
         public ActionResult Create()
         {
+           ViewBag.catt = db.categories.ToList();
             return View();
         }
 

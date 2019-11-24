@@ -6,10 +6,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create","products",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>product</h4>
         <hr />
@@ -24,10 +24,24 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.img, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "form-control" } })
+           <div class="col-md-10">
+                @if (ViewBag.fil != null)
+                {
+
+                    <h4>@ViewBag.fil</h4>
+                    <input type="hidden" name="img" value="@ViewBag.fil">
+                }
+                else
+                {
+                    @Html.ActionLink("Upload Here", "Upload");
+                }
                 @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
             </div>
+
+            @* <div class="col-md-10">
+                    @Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
+                </div>*@
         </div>
 
         <div class="form-group">
@@ -49,7 +63,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.catId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.catId, new { htmlAttributes = new { @class = "form-control" } })
+                  @Html.DropDownListFor(model => model.catId, new SelectList(ViewBag.category, "Id", "Name"), "Select")
+                @* @Html.EditorFor(model => model.catId, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.catId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,7 +72,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.subcatId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.subcatId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.subcatId, new SelectList(ViewBag.subcategory, "Id", "Name"), "Select")
+               @* @Html.EditorFor(model => model.subcatId, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.subcatId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -73,3 +89,6 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
